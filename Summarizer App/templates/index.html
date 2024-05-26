@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles.css">
+
+    <title>SumUp</title>
+</head>
+<body>
+  
+  <!--NavBar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="."><img src="../static/images/Black & White Minimalist Business Logo 2.png" alt="Logo" width="120" height="40" class="d-inline-block align-text-top"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="#features">Features</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#help">Help</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+    
+   <!--Hero--> 
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Summarize any article easily</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">SumUp is designed to help you quickly and efficiently summarize lengthy text documents, articles, or any other piece of written content. </p>
+      <div class="overflow-hidden" style="max-height: 50vh;">
+        <div class="container px-5">
+          <img src="../static/images/img-1.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+    
+  <!--Features-->  
+  <div class="container px-4 py-5" id="features">
+    <h2 class="pb-2 border-bottom">Features</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col-6 d-flex align-items-center">
+        
+        <div>
+          <h2>Web Scraping</h2>
+          <p>This feature automatically extracts the title , keywords and publish date, as well as summarizes the text from news articles and blog posts so you have everything in one place.</p>
+
+          <button class="btn btn-outline-primary" onclick="location.href='{{ url_for('web_scraper') }}'">
+            Begin
+          </button>
+        </div>
+      </div>
+      
+      <div class="col-6 d-flex align-items-center">
+        
+        <div>
+          <h2>Text Summarizing</h2>
+          <p>This feature takes any long text as input and returns the key sentences from it, helping you summarize information into a concise, easy to digest piece of text.</p>
+          
+          <button class="btn btn-outline-primary" onclick="location.href='{{ url_for('text_summarizer') }}'">
+            Begin
+          </button>
+        </div>
+      </div>
+      <div class="col-6 d-flex align-items-center">
+        
+        <div>
+          <h2>Word Cloud Generator</h2>
+          <p>This feature takes any long text as input and generates a word cloud from it, with the most frequently used and important words being more prominent!</p>
+          
+          <button class="btn btn-outline-primary" onclick="location.href='{{ url_for('wordcloud') }}'">
+            Begin
+          </button>
+        </div>
+      </div>
+      <div class="col-6 d-flex align-items-center">
+        
+        <div>
+          <h2>Named Entity Recognizer</h2>
+          <p>This feature takes any long text as input and returns all the names , organisations , products and geopolitical entites , giving you the keywords from the passage!</p>
+          
+          <button class="btn btn-outline-primary" onclick="location.href='{{ url_for('NER') }}'">
+            Begin
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!--About-->
+   <div class="container px-4 py-5" id="about">
+    <h2 class="pb-2 border-bottom">About</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col-12 d-flex align-items-start">
+        <div>
+          <p>In the sheer amount of information that bombards Internet users from all sides, hardly anyone wants to devote their valuable time to reading long texts. SumUp analyzes any piece of text and summarizes it automatically, in a way that makes it easy for you to read, understand and act on. SumUp eliminates ads, popups, graphics, and other online distractions to give you a clean and focused reading experience. SumUp selects the most relevant points from a text (while filtering out weak arguments, baseless speculation, flashy phrases, attention wasters etc) so you can get the gist of what is said quickly, without having to go through all the paragraphs.
+          </p>
+          <p>Simply select the feature you want to use. Then, enter the URL or text that you want summarized and let SumUp do the rest!</p>
+          <p>You could also check out our other features, Word Cloud Generator and Named Entity Recognizer as well!</p>
+        </div>
+      </div>   
+    </div>
+  </div>
+
+  <!--Form-->
+  <form class="container px-4 py-5" id="help" onsubmit="sendEmail(); reset(); return false;">
+    <h2 class="pb-2 border-bottom">Help</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3"></div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="query" class="form-label">Query</label>
+      <textarea class="form-control" id="query" rows="2"></textarea>  
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+    
+
+  <!--Footer-->
+  <div class="container">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+      <li class="nav-item"><a href="#features" class="nav-link px-2 text-body-secondary">Features</a></li>
+      <li class="nav-item"><a href="#about" class="nav-link px-2 text-body-secondary">About</a></li>
+      <li class="nav-item"><a href="#help" class="nav-link px-2 text-body-secondary">Help</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2023 SumUp, Inc</p>
+  </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="../static/index.js"></script>
+</body>
+</html>

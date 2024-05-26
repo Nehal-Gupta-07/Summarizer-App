@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>SumUp Word Cloud Generator</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="."><img src="../static/images/Black & White Minimalist Business Logo 2.png" alt="Logo" width="120" height="40" class="d-inline-block align-text-top"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" href="{{url_for('web_scraper')}}">Web Scraping</a>
+              <a class="nav-link" href="{{url_for('text_summarizer')}}">Text Summarizer</a>
+              <a class="nav-link" href="{{url_for('NER')}}">NER</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="px-4 py-5 my-5 text-center">
+      <h1 class="display-5 fw-bold text-body-emphasis">Word Cloud Generator</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">This feature takes any long text as input and generates a word cloud from it, with the most frequently used and important words being more prominent!</p>
+        <form method="POST" action="/word-cloud-generator">
+          <div class="mb-3">
+              <label for="cloudtextarea" class="form-label">Enter Text Below</label>
+              <textarea class="form-control" id="cloudtextarea" rows="3" name="cloudtextarea" ></textarea>
+              <button class="btn btn-outline-primary my-3" type="submit" name="submit" id="submit">Begin</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% if show_answer %}
+    <div class="px-4 py-5 my-5 text-center">
+      <h1 class="display-5 fw-bold text-body-emphasis" id="answer",show="{{show_answer}}">{{ title }}</h1>
+      <div class="col-lg-6 mx-auto my-3">
+        <img src="{{ wordcloud_image }}" class="lead mb-4 my-3 wordcloud">
+      </div>
+    </div>
+    {% endif %}
+    <script src="../static/index.js"></script>
+</body>
+</html>
